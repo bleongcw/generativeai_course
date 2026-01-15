@@ -9,7 +9,7 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 ### **Required API Keys and Credentials**
 
 #### **OpenAI API Access**
-- **OpenAI API Key**: Required for `prompt_engineering_day1_solution.ipynb`, `reasoning_o1_openAI.ipynb`, and `tooluse_openai.ipynb`.
+- **OpenAI API Key**: Required for `prompt_engineering_day1_solution.ipynb`, `reasoning_openAI.ipynb`, and `tooluse_openai.ipynb`.
 - Get your API key from: [OpenAI API Keys](https://platform.openai.com/api-keys).
 - Set as an environment variable:
   ```bash
@@ -41,10 +41,10 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 ### **Models Used in Notebooks**
 
 #### **OpenAI Models**
-- **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `reasoning_o1_openAI.ipynb`.
-- **GPT-4 Turbo**: Used in `prompt_engineering_day1_solution.ipynb` and `reasoning_o1_openAI.ipynb`.
+- **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `reasoning_openAI.ipynb`.
+- **GPT-4 Turbo**: Used in `prompt_engineering_day1_solution.ipynb` and `reasoning_openAI.ipynb`.
 - **GPT-3.5 Turbo**: Alternative model option in `prompt_engineering_day1_solution.ipynb`.
-- **o4-mini**: Advanced reasoning model used in `reasoning_o1_openAI.ipynb`.
+- **o3**: Advanced reasoning model used in `reasoning_openAI.ipynb`.
 
 #### **Anthropic Models**
 - **Claude 3 Haiku**: Used in `prompt_engineering_day1_solution.ipynb` and `understanding_anthropic_models.ipynb`.
@@ -91,7 +91,7 @@ A comprehensive introduction to prompt engineering for large language models (LL
 ### **prompt_engineering/understanding_anthropic_models.ipynb**
 Demonstrates how to retrieve and display a list of available models from the Anthropic AI platform using their Python client. Includes code for listing models, formatting output, and optional enhanced display with the `tabulate` library.
 
-### **prompt_engineering/reasoning_o1_openAI.ipynb**
+### **prompt_engineering/reasoning_openAI.ipynb**
 Focuses on advanced prompting and reasoning with OpenAI's latest models (including `o1` and GPT-4 series). Shows how to list available OpenAI models, construct effective reasoning prompts, and use structured formats. Includes practical code for generating functions and outputs using reasoning models. Features enhanced IPython HTML displays for better visualization of results.
 
 ### **prompt_engineering/prompt_engineering_amazon_bedrock.ipynb**
