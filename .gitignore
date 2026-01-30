@@ -2,3 +2,6 @@ agents/1_lab1.ipynb
 agents/2_lab2.ipynb
 agents/3_lab3.ipynb
 agents/4_lab4.ipynb
+
+# Claude Code local settings
+.claude/settings.local.json
