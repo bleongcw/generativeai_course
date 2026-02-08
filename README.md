@@ -62,7 +62,12 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 Install the following packages using `pip`:
 
 ```bash
-pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupyter
+pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupyter pandas openai-agents
+```
+
+**For AI Agents SDK (Lab1):**
+```bash
+pip install openai-agents openai>=1.54.0 pandas numpy
 ```
 
 ---
@@ -108,7 +113,28 @@ Introduces prompt engineering with Amazon Bedrock's APIs, covering both the basi
 Explores multi-modal capabilities with Amazon Bedrock, including image processing and embeddings. Uses the Titan embedding models to work with product images for similarity search and cross-modal reasoning. The notebook includes practical examples using the product images in the `data/titan-embed/` directory.
 
 ### **agents/Lab1_introduction_to_agents_openAI.ipynb**
-Provides an introduction to AI agents using OpenAI's Agents SDK. Covers environment setup, API key configuration, and foundational concepts for building agentic applications. Includes detailed setup instructions and troubleshooting guidance for getting started with agent development.
+**Complete production-ready AI Agents tutorial using OpenAI's Agents SDK.** Comprehensive educational resource covering:
+
+- **Environment Setup**: Complete installation guide for `openai-agents` SDK, dependency management, API key configuration
+- **Agent Fundamentals**: Creating agents, model selection (GPT-4o, GPT-5.2), instructions, temperature control, and agent lifecycle
+- **Custom Function Tools**: Build and integrate custom Python functions as agent tools using `@function_tool` decorator
+- **Built-in Tools**: WebSearchTool for real-time web search ($0.025/call), FileSearchTool for vector store integration
+- **Structured Outputs**: Type-safe responses using Pydantic models with strict JSON schema compliance (KeyMetric pattern)
+- **Multi-Agent Patterns**:
+  - Agent handoffs with `handoffs` parameter for specialist delegation
+  - Router agents for query classification and routing
+  - Customer support bot with triage and specialist agents
+- **Streaming Responses**: Real-time token-by-token output using `Runner.run_streamed()` with `ResponseTextDeltaEvent`
+- **Error Handling**: Production patterns including retry with exponential backoff, fallback strategies, and graceful degradation
+- **Cost Tracking**: Built-in CostTracker class with Pandas DataFrame reports for monitoring API usage and costs
+- **Professional Display System**:
+  - HTML cards with color-coded status indicators (success/info/warning/error)
+  - Markdown section headers with descriptions
+  - Styled analysis reports with gradient backgrounds
+  - Pandas tables for structured data and metrics
+- **Production Best Practices**: Error recovery, type safety, structured outputs, cost monitoring, and visual feedback
+- **Complete Documentation**: Includes `DISPLAY_IMPROVEMENTS.md` with usage examples and customization guide
+- **60+ comprehensive cells** with working examples, from basics to advanced multi-agent workflows
 
 ### **tool_use/tooluse_anthropic.ipynb**
 **Comprehensive agentic tool use guide with Anthropic Claude Sonnet 4.5.** Production-ready educational resource covering:
@@ -145,6 +171,58 @@ Provides an introduction to AI agents using OpenAI's Agents SDK. Covers environm
 ## **Key Features and Updates**
 
 ### **Recent Updates (2026-02-08)**
+
+#### **Major Enhancement: agents/Lab1_introduction_to_agents_openAI.ipynb** - Complete production-ready AI Agents tutorial
+
+**Critical Fixes & SDK Integration:**
+- **OpenAI Agents SDK Installation**: Added complete setup for `openai-agents==0.8.1` with all dependencies
+- **Strict JSON Schema Compliance**:
+  - Fixed `UserError` with `Dict[str, str]` by implementing `KeyMetric` model pattern
+  - Changed `key_metrics: Dict[str, str]` to `key_metrics: List[KeyMetric]` for strict schema compatibility
+- **Agent Handoffs**:
+  - Fixed `TypeError` with `handoff_to` parameter → corrected to `handoffs` with Agent object references
+  - Updated 2 locations: Phase 5 Handoff Pattern Demo and Customer Support Bot
+  - Proper multi-agent delegation with `transfer_to_*` tool generation
+- **Streaming Implementation**:
+  - Fixed `TypeError` in streaming by using `result.stream_events()` pattern
+  - Added `ResponseTextDeltaEvent` handling for token-by-token output
+- **Error Handling Patterns**:
+  - Fixed `AttributeError` by returning tuple `(result, agent_name)` from fallback function
+  - Implemented retry with exponential backoff and fallback strategies
+- **Dependency Management**:
+  - Installed pandas==3.0.0 and numpy==2.4.2 for display enhancements
+  - All ModuleNotFoundError issues resolved
+
+**Professional Display System (Moderate Enhancement Level):**
+- **Helper Functions**:
+  - `display_section_header()` - Markdown headers with emoji and descriptions
+  - `display_agent_response()` - HTML cards with color-coded status (success/info/warning/error)
+  - `display_analysis_report()` - Formatted reports with gradient backgrounds
+- **Cost Tracking Enhancement**:
+  - Upgraded `CostTracker.report()` to use Pandas DataFrames with styled tables
+  - Separate tables for summary metrics and by-model breakdown
+  - Purple gradient headers matching notebook theme
+- **Visual Improvements**:
+  - Replaced 265 plain `print()` statements with rich displays in 6+ key sections
+  - Color-coded agent responses with gradients, shadows, and rounded corners
+  - Professional typography and consistent spacing
+  - HTML cards for: Data Analysis Pipeline, Handoff Demo, Customer Support, Error Handling
+  - Markdown headers for: Streaming Demo, Structured Output, all major phases
+- **Documentation**: Created `agents/DISPLAY_IMPROVEMENTS.md` with complete usage guide, color scheme reference, and examples
+
+**Code Quality & Organization:**
+- Removed 3 backup/messy notebook files (*.backup, *_MESSY*.ipynb)
+- Updated `.gitignore` to exclude `.claude/` directory
+- Clean, maintainable structure with reusable helper functions
+- Type-safe implementations with Pydantic validation
+
+**Educational Impact:**
+- Students see professional, color-coded outputs matching industry standards
+- Clear visual hierarchy for understanding agent behavior
+- Transparent cost tracking for learning budget management
+- Production-ready patterns for real-world applications
+- **60+ comprehensive cells** covering fundamentals to advanced multi-agent workflows
+
 - **Model Updates**:
   - `prompt_engineering_day1_solution.ipynb`: Updated to use fast, cost-effective models (Claude Haiku 4.5 and GPT-4o-mini)
   - `prompt_engineering_reasoning_model_day1.ipynb`: Complete overhaul with latest reasoning models (o3, o4-mini, o3-mini) and Claude Extended Thinking
