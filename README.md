@@ -42,14 +42,14 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 
 #### **OpenAI Models**
 - **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `reasoning_openAI.ipynb`.
-- **GPT-4 Turbo**: Used in `prompt_engineering_day1_solution.ipynb` and `reasoning_openAI.ipynb`.
-- **GPT-3.5 Turbo**: Alternative model option in `prompt_engineering_day1_solution.ipynb`.
+- **GPT-4o-mini**: Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
+- **GPT-4 Turbo**: Used in `reasoning_openAI.ipynb`.
 - **o3**: Advanced reasoning model used in `reasoning_openAI.ipynb`.
 
 #### **Anthropic Models**
 - **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
+- **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
 - **Claude 3.5 Haiku**: Used in `understanding_anthropic_models.ipynb`.
-- **Claude 3 Haiku**: Used in `prompt_engineering_day1_solution.ipynb` and `understanding_anthropic_models.ipynb`.
 - **Claude 3 Sonnet**: Alternative model option.
 
 ### **Required Python Libraries**
@@ -80,7 +80,7 @@ pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupy
 ## **Jupyter Notebooks Overview**
 
 ### **prompt_engineering/prompt_engineering_day1_solution.ipynb**
-A comprehensive introduction to prompt engineering for large language models (LLMs) such as OpenAI's GPT-4 and Anthropic's Claude. Covers principles of prompt design, API usage, message formatting, model parameters (`max_tokens`, `temperature`, `stop sequences`), and system prompts. Includes hands-on code examples for both OpenAI and Anthropic APIs.
+A comprehensive introduction to prompt engineering for large language models (LLMs) using OpenAI's GPT-4o-mini and Anthropic's Claude Haiku 4.5. Covers principles of prompt design, API usage, message formatting, model parameters (`max_tokens`/`max_completion_tokens`, `temperature`, `stop sequences`), and system prompts. Features both fast and cost-effective models ideal for learning and experimentation. Includes hands-on code examples comparing OpenAI and Anthropic APIs with equivalent model tiers.
 
 ### **prompt_engineering/understanding_anthropic_models.ipynb**
 Demonstrates how to retrieve and display a list of available models from the Anthropic AI platform using their Python client. Includes code for listing models, formatting output, and optional enhanced display with the `tabulate` library.
@@ -106,6 +106,13 @@ Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebo
 ---
 
 ## **Key Features and Updates**
+
+### **Recent Updates (2026-02-08)**
+- **Model Updates**: Updated `prompt_engineering_day1_solution.ipynb` to use fast, cost-effective models:
+  - Anthropic: Now uses Claude Haiku 4.5 (`claude-haiku-4-5-20251001`)
+  - OpenAI: Now uses GPT-4o-mini
+- **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter for compatibility with newer models
+- **Model Parity**: Both APIs now demonstrate equivalent model tiers (fast/cost-effective) for better comparison
 
 ### **Enhanced Display System**
 - **IPython HTML Integration**: Beautiful, professional HTML displays for AI responses
