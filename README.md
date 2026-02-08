@@ -42,15 +42,15 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 
 #### **OpenAI Models**
 - **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `reasoning_openAI.ipynb`.
-- **GPT-4 Turbo**: Used in `prompt_engineering_day1_solution.ipynb` and `reasoning_openAI.ipynb`.
-- **GPT-3.5 Turbo**: Alternative model option in `prompt_engineering_day1_solution.ipynb`.
+- **GPT-5.2**: Used in `prompt_engineering_day1_solution.ipynb`. OpenAI's flagship model for coding and agentic tasks.
+- **GPT-4 Turbo**: Used in `reasoning_openAI.ipynb`.
 - **o3**: Advanced reasoning model used in `reasoning_openAI.ipynb`.
 
 #### **Anthropic Models**
 - **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
 - **Claude 3.5 Haiku**: Used in `understanding_anthropic_models.ipynb`.
-- **Claude 3 Haiku**: Used in `prompt_engineering_day1_solution.ipynb` and `understanding_anthropic_models.ipynb`.
-- **Claude 3 Sonnet**: Alternative model option.
+- **Claude Sonnet 4.5**: Used in `prompt_engineering_day1_solution.ipynb`. Anthropic's most intelligent model for coding and complex agents.
+- **Claude 3 Haiku**: Used in `understanding_anthropic_models.ipynb`.
 
 ### **Required Python Libraries**
 
@@ -80,7 +80,7 @@ pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupy
 ## **Jupyter Notebooks Overview**
 
 ### **prompt_engineering/prompt_engineering_day1_solution.ipynb**
-A comprehensive introduction to prompt engineering for large language models (LLMs) such as OpenAI's GPT-4 and Anthropic's Claude. Covers principles of prompt design, API usage, message formatting, model parameters (`max_tokens`, `temperature`, `stop sequences`), and system prompts. Includes hands-on code examples for both OpenAI and Anthropic APIs.
+A comprehensive introduction to prompt engineering for large language models (LLMs) such as OpenAI's GPT-5.2 and Anthropic's Claude Sonnet 4.5. Covers principles of prompt design, API usage, message formatting, model parameters (`max_tokens`, `temperature`, `stop sequences`), and system prompts. Includes hands-on code examples for both OpenAI and Anthropic APIs.
 
 ### **prompt_engineering/understanding_anthropic_models.ipynb**
 Demonstrates how to retrieve and display a list of available models from the Anthropic AI platform using their Python client. Includes code for listing models, formatting output, and optional enhanced display with the `tabulate` library.
