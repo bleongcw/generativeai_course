@@ -41,8 +41,8 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 ### **Models Used in Notebooks**
 
 #### **OpenAI Models**
-- **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `prompt_engineering_reasoning_model_day1.ipynb` (for comparison).
-- **GPT-4o-mini**: Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
+- **GPT-4o**: Primary model used in `prompt_engineering_reasoning_model_day1.ipynb` (for comparison).
+- **GPT-4o-mini**: Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb` and `tooluse_openai.ipynb` (~10x cheaper than gpt-4o).
 - **o3** (`o3-2025-04-16`): Most advanced reasoning model used in `prompt_engineering_reasoning_model_day1.ipynb`.
 - **o4-mini** (`o4-mini-2025-04-16`): Cost-effective reasoning model used in `prompt_engineering_reasoning_model_day1.ipynb`.
 - **o3-mini** (`o3-mini-2025-01-31`): Balanced reasoning model used in `prompt_engineering_reasoning_model_day1.ipynb`.
@@ -51,7 +51,8 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 - **Claude Opus 4.6** (`claude-opus-4-6`): Most capable model with Extended Thinking feature, used in `prompt_engineering_reasoning_model_day1.ipynb`.
 - **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Balanced model with Extended Thinking, used in `prompt_engineering_reasoning_model_day1.ipynb`.
 - **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
-- **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
+- **Claude 3.7 Sonnet**: Available via Amazon Bedrock.
+- **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Used in `tooluse_anthropic.ipynb` for balanced performance and cost.
 - **Claude 4.6 Opus** (`claude-opus-4-6`): Used in `prompt_engineering_anthropic_models_advanced.ipynb` for capability comparisons.
 - **Claude 4.5 Sonnet** (`claude-sonnet-4-5-20250929`): Used in `prompt_engineering_anthropic_models_advanced.ipynb`.
 - **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Primary model used in `prompt_engineering_anthropic_models_advanced.ipynb`.
@@ -110,10 +111,34 @@ Explores multi-modal capabilities with Amazon Bedrock, including image processin
 Provides an introduction to AI agents using OpenAI's Agents SDK. Covers environment setup, API key configuration, and foundational concepts for building agentic applications. Includes detailed setup instructions and troubleshooting guidance for getting started with agent development.
 
 ### **tool_use/tooluse_anthropic.ipynb**
-Demonstrates how to build and use an agentic tool with Anthropic Claude. The notebook walks through defining a Wikipedia article retrieval tool, setting up a tool schema, and orchestrating a full agentic loop for question answering with external tool calls. It includes practical code for integrating the tool with Claude's API, handling tool use responses, and returning results to the model. Each step is explained with detailed markdown cells for clarity.
+**Comprehensive agentic tool use guide with Anthropic Claude Sonnet 4.5.** Production-ready educational resource covering:
+
+- **Complete Tool Integration**: Wikipedia article retrieval with robust error handling (empty results, disambiguation, page errors)
+- **Professional HTML Displays**: Beautiful gradient styling with responsive design for results presentation
+- **Helper Functions**: `extract_tool_use()` with type hints and comprehensive docstrings
+- **Educational Examples**:
+  - "No tool needed" scenarios (when Claude uses internal knowledge)
+  - Multi-turn conversations with tool chaining
+  - Error handling demonstrations with real edge cases
+- **API Documentation**: Detailed comparison of Anthropic vs OpenAI tool use patterns
+- **Best Practices**: Input validation, error handling, clean code organization
+- **44 comprehensive cells** with clear progression from basics to advanced patterns
 
 ### **tool_use/tooluse_openai.ipynb**
-Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebook walks through defining a Wikipedia article retrieval tool, setting up a tool schema compatible with OpenAI's function calling API, and orchestrating a full agentic loop for question answering with external tool calls. Features enhanced IPython HTML displays for beautiful, professional presentation of results. Includes practical code for integrating the tool with OpenAI's API, handling tool use responses, and returning results to the model. Each step is explained with detailed markdown cells for clarity.
+**Comprehensive agentic tool use guide with OpenAI GPT-4o-mini.** Production-ready educational resource covering:
+
+- **Complete Tool Integration**: Wikipedia article retrieval with function calling API
+- **Security Hardened**: Uses `json.loads()` instead of `eval()` for safe JSON parsing (critical security fix)
+- **Professional HTML Displays**: Beautiful gradient styling matching Anthropic version
+- **Helper Functions**: `extract_tool_calls()` with type hints and comprehensive docstrings
+- **Educational Examples**:
+  - "No tool needed" scenarios (when GPT uses internal knowledge)
+  - Multi-turn conversations with proper message structure
+  - Error handling demonstrations with robust try/except blocks
+- **API Documentation**: Detailed comparison of OpenAI vs Anthropic tool use patterns
+- **Code Quality**: Eliminated 13 exploratory cells, consolidated duplicates, clear structure
+- **Cost-Effective**: Uses gpt-4o-mini (~10x cheaper than gpt-4o) perfect for student experimentation
+- **25 focused cells** (reduced from 29) with streamlined, professional progression
 
 ---
 
@@ -128,8 +153,31 @@ Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebo
     - Updated 5 Claude 3.5 Sonnet references → Claude 4.5 Sonnet (`claude-sonnet-4-5-20250929`)
     - Updated 7 Claude 3/3.5 Haiku references → Claude 4.5 Haiku (`claude-haiku-4-5-20251001`)
     - Total: 18 model ID updates ensuring students work with latest, most capable models
+  - **`tool_use/` notebooks: Complete transformation to production-ready educational resources**
+    - `tooluse_anthropic.ipynb`: Updated to Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`)
+    - `tooluse_openai.ipynb`: Updated to GPT-4o-mini (cost-effective alternative)
 - **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter
 - **Bug Fix**: Merged `calculate_cost` function into main setup cell (cell 3) to prevent undefined function errors. The function is now automatically loaded with initial imports and configuration, eliminating the need to manually run additional cells.
+- **Major Enhancement: `tool_use/` notebooks** - Comprehensive 4-phase improvement:
+  - **Phase 1 - Critical Fixes**:
+    - Security: Replaced unsafe `eval()` with `json.loads()` in OpenAI notebook (8 occurrences)
+    - Error Handling: Added robust `get_article()` function with disambiguation, empty results, and exception handling
+    - Added type hints and comprehensive docstrings to core functions
+  - **Phase 2 - Code Quality**:
+    - Removed 13 exploratory/incomplete cells from OpenAI notebook (29 → 25 cells)
+    - Eliminated duplicate function definitions (get_article, article_search_tool)
+    - Added helper functions: `extract_tool_use()` (Anthropic), `extract_tool_calls()` (OpenAI)
+    - Unified display functions with professional HTML styling in both notebooks
+  - **Phase 3 - Educational Enhancements**:
+    - Added "no tool needed" examples showing when models use internal knowledge
+    - Added multi-turn conversation examples with proper message handling
+    - Added error handling demonstrations (disambiguation, empty results)
+    - Added comprehensive API differences documentation (Anthropic vs OpenAI)
+    - Added best practices and "Next Steps" sections
+  - **Phase 4 - Polish & Best Practices**:
+    - Enhanced all functions with type hints (`Optional`, `Any`, `List`)
+    - Added comprehensive docstrings with Args, Returns, Examples
+    - Consistent code organization and structure across both notebooks
 - **Major Enhancement: prompt_engineering_anthropic_models_advanced.ipynb** - Transformed into the most comprehensive Claude API guide:
   - **System Prompts**: Complete guide with comparison examples (with/without system prompts), best practices, advanced patterns
   - **Temperature & Parameters**: In-depth coverage with live comparisons across 0.0/0.5/1.0, use case recommendations, top_p and top_k
