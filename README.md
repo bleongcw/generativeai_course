@@ -17,7 +17,7 @@ This repository contains the files and Jupyter notebooks used for teaching cours
   ```
 
 #### **Anthropic API Access**
-- **Anthropic API Key**: Required for `prompt_engineering_day1_solution.ipynb`, `understanding_anthropic_models.ipynb`, and `tooluse_anthropic.ipynb`.
+- **Anthropic API Key**: Required for `prompt_engineering_day1_solution.ipynb`, `prompt_engineering_anthropic_models_advanced.ipynb`, and `tooluse_anthropic.ipynb`.
 - Get your API key from: [Anthropic Console](https://console.anthropic.com/).
 - Set as an environment variable:
   ```bash
@@ -52,7 +52,7 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 - **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Balanced model with Extended Thinking, used in `prompt_engineering_reasoning_model_day1.ipynb`.
 - **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
 - **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
-- **Claude 3.5 Haiku**: Used in `understanding_anthropic_models.ipynb`.
+- **Claude 3.5 Haiku**: Used in `prompt_engineering_anthropic_models_advanced.ipynb`.
 
 ### **Required Python Libraries**
 
@@ -84,8 +84,16 @@ pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupy
 ### **prompt_engineering/prompt_engineering_day1_solution.ipynb**
 A comprehensive introduction to prompt engineering for large language models (LLMs) using OpenAI's GPT-4o-mini and Anthropic's Claude Haiku 4.5. Covers principles of prompt design, API usage, message formatting, model parameters (`max_tokens`/`max_completion_tokens`, `temperature`, `stop sequences`), and system prompts. Features both fast and cost-effective models ideal for learning and experimentation. Includes hands-on code examples comparing OpenAI and Anthropic APIs with equivalent model tiers.
 
-### **prompt_engineering/understanding_anthropic_models.ipynb**
-Demonstrates how to retrieve and display a list of available models from the Anthropic AI platform using their Python client. Includes code for listing models, formatting output, and optional enhanced display with the `tabulate` library.
+### **prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb**
+**The most comprehensive Claude API guide available** - A complete production-ready resource covering everything from basics to advanced patterns.
+
+**Core Fundamentals**: Model selection across Claude 4 and 3 series (Opus, Sonnet, Haiku), system prompts for role definition, temperature and parameter tuning (0.0-1.0 ranges with use cases), messages format and conversation history management, few-shot prompting techniques with examples.
+
+**Production Features**: Token counting with cost calculators for all Claude models, robust error handling with exponential backoff retry logic, rate limit management, batch processing with examples, comprehensive best practices checklist (10 categories covering model selection, prompt design, parameters, error handling, cost management, security, testing, production readiness, UX, and maintenance).
+
+**Advanced Capabilities**: Multi-turn conversation management with ConversationManager class, stop sequences for controlled generation, streaming responses for better UX, reusable prompt templates and patterns (PromptTemplate class), JSON mode and structured outputs with parsing helpers, 4 complete real-world use cases (content moderation, document processing, code review, customer support bot).
+
+**Hands-on Examples**: Every concept includes working code examples with output. Advanced use cases demonstrate production-ready patterns combining multiple techniques. Perfect for beginners learning Claude API basics and experienced developers building scalable production applications.
 
 ### **prompt_engineering/prompt_engineering_reasoning_model_day1.ipynb**
 Comprehensive guide to reasoning models from both OpenAI (o3, o4-mini, o3-mini) and Anthropic (Claude with Extended Thinking). Covers the 4 key principles of prompting reasoning models, cost/performance comparisons, advanced examples (mathematical proofs, code debugging, multi-step planning), and interactive testing functions. Includes detailed model selection guide to help choose the right model for your task. Features enhanced IPython HTML displays, error handling, token usage tracking, and cost analysis for all major reasoning models.
@@ -114,6 +122,19 @@ Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebo
   - `prompt_engineering_day1_solution.ipynb`: Updated to use fast, cost-effective models (Claude Haiku 4.5 and GPT-4o-mini)
   - `prompt_engineering_reasoning_model_day1.ipynb`: Complete overhaul with latest reasoning models (o3, o4-mini, o3-mini) and Claude Extended Thinking
 - **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter
+- **Major Enhancement: prompt_engineering_anthropic_models_advanced.ipynb** - Transformed into the most comprehensive Claude API guide:
+  - **System Prompts**: Complete guide with comparison examples (with/without system prompts), best practices, advanced patterns
+  - **Temperature & Parameters**: In-depth coverage with live comparisons across 0.0/0.5/1.0, use case recommendations, top_p and top_k
+  - **Token Counting & Cost Management**: Production-ready calculator for all Claude models, real API tracking, cost comparisons
+  - **Error Handling & Retry Logic**: Exponential backoff, rate limiting, batch processing with full error taxonomy
+  - **Multi-turn Conversations**: ConversationManager class, session management, token tracking, conversation strategies
+  - **Stop Sequences**: Controlled generation with delimiters, structured data extraction, dialogue formatting
+  - **Streaming Responses**: Real-time output, event handling, token tracking during streams, helper functions
+  - **Prompt Templates**: Reusable PromptTemplate class, common patterns library (extraction, classification, analysis, etc.)
+  - **JSON Mode & Structured Outputs**: Robust JSON generation, parsing helpers, schema validation, complex nested structures
+  - **Advanced Use Cases**: 4 production-ready examples (content moderation, document processing, code review, support bot)
+  - **Best Practices Checklist**: 10-category comprehensive guide for production deployment
+  - **310+ code cells** with working examples for every concept
 - **New Features in prompt_engineering_reasoning_model_day1.ipynb**:
   - Added all 4 principles for prompting reasoning models (was incomplete)
   - Claude Extended Thinking examples with full integration
