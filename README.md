@@ -89,7 +89,7 @@ A comprehensive introduction to prompt engineering for large language models (LL
 ### **prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb**
 **The most comprehensive Claude API guide available** - A complete production-ready resource covering everything from basics to advanced patterns.
 
-**Core Fundamentals**: Model selection across Claude 4 and 3 series (Opus, Sonnet, Haiku), system prompts for role definition, temperature and parameter tuning (0.0-1.0 ranges with use cases), messages format and conversation history management, few-shot prompting techniques with examples.
+**Core Fundamentals**: Model selection across Claude 4 family (Opus 4.6, Sonnet 4.5, Haiku 4.5), system prompts for role definition, temperature and parameter tuning (0.0-1.0 ranges with use cases), messages format and conversation history management, few-shot prompting techniques with examples.
 
 **Production Features**: Token counting with cost calculators for all Claude models, robust error handling with exponential backoff retry logic, rate limit management, batch processing with examples, comprehensive best practices checklist (10 categories covering model selection, prompt design, parameters, error handling, cost management, security, testing, production readiness, UX, and maintenance).
 
@@ -123,11 +123,17 @@ Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebo
 - **Model Updates**:
   - `prompt_engineering_day1_solution.ipynb`: Updated to use fast, cost-effective models (Claude Haiku 4.5 and GPT-4o-mini)
   - `prompt_engineering_reasoning_model_day1.ipynb`: Complete overhaul with latest reasoning models (o3, o4-mini, o3-mini) and Claude Extended Thinking
+  - `prompt_engineering_anthropic_models_advanced.ipynb`: **Migrated all Claude 3.x models to Claude 4 family**
+    - Updated 6 Claude 3 Opus references → Claude 4.6 Opus (`claude-opus-4-6`)
+    - Updated 5 Claude 3.5 Sonnet references → Claude 4.5 Sonnet (`claude-sonnet-4-5-20250929`)
+    - Updated 7 Claude 3/3.5 Haiku references → Claude 4.5 Haiku (`claude-haiku-4-5-20251001`)
+    - Total: 18 model ID updates ensuring students work with latest, most capable models
 - **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter
+- **Bug Fix**: Merged `calculate_cost` function into main setup cell (cell 3) to prevent undefined function errors. The function is now automatically loaded with initial imports and configuration, eliminating the need to manually run additional cells.
 - **Major Enhancement: prompt_engineering_anthropic_models_advanced.ipynb** - Transformed into the most comprehensive Claude API guide:
   - **System Prompts**: Complete guide with comparison examples (with/without system prompts), best practices, advanced patterns
   - **Temperature & Parameters**: In-depth coverage with live comparisons across 0.0/0.5/1.0, use case recommendations, top_p and top_k
-  - **Token Counting & Cost Management**: Production-ready calculator for all Claude models, real API tracking, cost comparisons
+  - **Token Counting & Cost Management**: Production-ready calculator for Claude 4 family models (Opus 4.6, Sonnet 4.5, Haiku 4.5), real API tracking, cost comparisons
   - **Error Handling & Retry Logic**: Exponential backoff, rate limiting, batch processing with full error taxonomy
   - **Multi-turn Conversations**: ConversationManager class, session management, token tracking, conversation strategies
   - **Stop Sequences**: Controlled generation with delimiters, structured data extraction, dialogue formatting
@@ -136,7 +142,7 @@ Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebo
   - **JSON Mode & Structured Outputs**: Robust JSON generation, parsing helpers, schema validation, complex nested structures
   - **Advanced Use Cases**: 4 production-ready examples (content moderation, document processing, code review, support bot)
   - **Best Practices Checklist**: 10-category comprehensive guide for production deployment
-  - **310+ code cells** with working examples for every concept
+  - **90 comprehensive cells** covering every concept from fundamentals to advanced use cases
 - **New Features in prompt_engineering_reasoning_model_day1.ipynb**:
   - Added all 4 principles for prompting reasoning models (was incomplete)
   - Claude Extended Thinking examples with full integration
