@@ -41,16 +41,18 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 ### **Models Used in Notebooks**
 
 #### **OpenAI Models**
-- **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `reasoning_openAI.ipynb`.
+- **GPT-4o**: Primary model used in `tooluse_openai.ipynb` and `reasoning_openAI.ipynb` (for comparison).
 - **GPT-4o-mini**: Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
-- **GPT-4 Turbo**: Used in `reasoning_openAI.ipynb`.
-- **o3**: Advanced reasoning model used in `reasoning_openAI.ipynb`.
+- **o3** (`o3-2025-04-16`): Most advanced reasoning model used in `reasoning_openAI.ipynb`.
+- **o4-mini** (`o4-mini-2025-04-16`): Cost-effective reasoning model used in `reasoning_openAI.ipynb`.
+- **o3-mini** (`o3-mini-2025-01-31`): Balanced reasoning model used in `reasoning_openAI.ipynb`.
 
 #### **Anthropic Models**
-- **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
+- **Claude Opus 4.6** (`claude-opus-4-6`): Most capable model with Extended Thinking feature, used in `reasoning_openAI.ipynb`.
+- **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Balanced model with Extended Thinking, used in `reasoning_openAI.ipynb`.
 - **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
+- **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
 - **Claude 3.5 Haiku**: Used in `understanding_anthropic_models.ipynb`.
-- **Claude 3 Sonnet**: Alternative model option.
 
 ### **Required Python Libraries**
 
@@ -86,7 +88,7 @@ A comprehensive introduction to prompt engineering for large language models (LL
 Demonstrates how to retrieve and display a list of available models from the Anthropic AI platform using their Python client. Includes code for listing models, formatting output, and optional enhanced display with the `tabulate` library.
 
 ### **prompt_engineering/reasoning_openAI.ipynb**
-Focuses on advanced prompting and reasoning with OpenAI's latest models (including `o1` and GPT-4 series). Shows how to list available OpenAI models, construct effective reasoning prompts, and use structured formats. Includes practical code for generating functions and outputs using reasoning models. Features enhanced IPython HTML displays for better visualization of results.
+Comprehensive guide to reasoning models from both OpenAI (o3, o4-mini, o3-mini) and Anthropic (Claude with Extended Thinking). Covers the 4 key principles of prompting reasoning models, cost/performance comparisons, advanced examples (mathematical proofs, code debugging, multi-step planning), and interactive testing functions. Includes detailed model selection guide to help choose the right model for your task. Features enhanced IPython HTML displays, error handling, token usage tracking, and cost analysis for all major reasoning models.
 
 ### **prompt_engineering/prompt_engineering_amazon_bedrock.ipynb**
 Introduces prompt engineering with Amazon Bedrock's APIs, covering both the basic Invoke API and the more powerful Converse API. Demonstrates text summarization, multi-turn conversations, and function calling capabilities across various foundation models including Claude 3.7 Sonnet, Amazon Nova Pro, and Meta Llama 3.1. Includes practical examples of comparing results across different state-of-the-art models and working with AWS Bedrock's serverless infrastructure.
@@ -108,11 +110,19 @@ Demonstrates how to build and use an agentic tool with OpenAI GPT-4o. The notebo
 ## **Key Features and Updates**
 
 ### **Recent Updates (2026-02-08)**
-- **Model Updates**: Updated `prompt_engineering_day1_solution.ipynb` to use fast, cost-effective models:
-  - Anthropic: Now uses Claude Haiku 4.5 (`claude-haiku-4-5-20251001`)
-  - OpenAI: Now uses GPT-4o-mini
-- **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter for compatibility with newer models
-- **Model Parity**: Both APIs now demonstrate equivalent model tiers (fast/cost-effective) for better comparison
+- **Model Updates**:
+  - `prompt_engineering_day1_solution.ipynb`: Updated to use fast, cost-effective models (Claude Haiku 4.5 and GPT-4o-mini)
+  - `reasoning_openAI.ipynb`: Complete overhaul with latest reasoning models (o3, o4-mini, o3-mini) and Claude Extended Thinking
+- **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter
+- **New Features in reasoning_openAI.ipynb**:
+  - Added all 4 principles for prompting reasoning models (was incomplete)
+  - Claude Extended Thinking examples with full integration
+  - Cost calculator and performance comparison across models
+  - Advanced reasoning examples (math proofs, code debugging, planning)
+  - Interactive testing function for custom prompts
+  - Comprehensive model selection guide with decision tree
+  - Error handling and token usage tracking throughout
+  - Enhanced visualizations with IPython HTML displays
 
 ### **Enhanced Display System**
 - **IPython HTML Integration**: Beautiful, professional HTML displays for AI responses
