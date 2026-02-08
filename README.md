@@ -52,7 +52,9 @@ This repository contains the files and Jupyter notebooks used for teaching cours
 - **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Balanced model with Extended Thinking, used in `prompt_engineering_reasoning_model_day1.ipynb`.
 - **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
 - **Claude 3.7 Sonnet**: Used in `tooluse_anthropic.ipynb` and available via Amazon Bedrock.
-- **Claude 3.5 Haiku**: Used in `prompt_engineering_anthropic_models_advanced.ipynb`.
+- **Claude 4.6 Opus** (`claude-opus-4-6`): Used in `prompt_engineering_anthropic_models_advanced.ipynb` for capability comparisons.
+- **Claude 4.5 Sonnet** (`claude-sonnet-4-5-20250929`): Used in `prompt_engineering_anthropic_models_advanced.ipynb`.
+- **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Primary model used in `prompt_engineering_anthropic_models_advanced.ipynb`.
 
 ### **Required Python Libraries**
 
