@@ -3,5 +3,15 @@ agents/2_lab2.ipynb
 agents/3_lab3.ipynb
 agents/4_lab4.ipynb
 
+# IDE and editor files
+.vscode/
+
 # Claude Code local settings and memory
 .claude/
+
+# Jupyter Notebook checkpoints and temp files
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Display improvements documentation
+DISPLAY_IMPROVEMENTS.md
