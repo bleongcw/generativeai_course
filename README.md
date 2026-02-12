@@ -1,333 +1,122 @@
-# **Generative AI Course Repository**
+# Generative AI Course Repository
 
-This repository contains the files and Jupyter notebooks used for teaching courses at the **Institute of Systems Science, National University of Singapore**. The materials focus on prompt engineering, reasoning models, and tool usage with state-of-the-art AI models from OpenAI, Anthropic, and Amazon Bedrock.
+Course materials for workshops and labs at the Institute of Systems Science (NUS). This repository includes notebooks on prompt engineering, reasoning models, tool use, and agentic AI workflows.
 
----
+## Repository Structure
 
-## **Prerequisites and Setup**
+- `prompt_engineering/`:
+  Prompt engineering, model behavior, and reasoning examples.
+- `agents/`:
+  Agent workflows, orchestration patterns, and hands-on labs.
+- `tool_use/`:
+  Function/tool-calling workflows with OpenAI and Anthropic.
 
-### **Required API Keys and Credentials**
+## Quick Setup
 
-#### **OpenAI API Access**
-- **OpenAI API Key**: Required for `prompt_engineering_day1_solution.ipynb`, `prompt_engineering_reasoning_model_day1.ipynb`, and `tooluse_openai.ipynb`.
-- Get your API key from: [OpenAI API Keys](https://platform.openai.com/api-keys).
-- Set as an environment variable:
-  ```bash
-  OPENAI_API_KEY=your_openai_api_key
-  ```
-
-#### **Anthropic API Access**
-- **Anthropic API Key**: Required for `prompt_engineering_day1_solution.ipynb`, `prompt_engineering_anthropic_models_advanced.ipynb`, and `tooluse_anthropic.ipynb`.
-- Get your API key from: [Anthropic Console](https://console.anthropic.com/).
-- Set as an environment variable:
-  ```bash
-  ANTHROPIC_API_KEY=your_anthropic_api_key
-  ```
-
-#### **Amazon Bedrock Access**
-- **AWS Account**: Required for `prompt_engineering_amazon_bedrock.ipynb` and `prompt_engineering_multi_modal_models_amazon_bedrock.ipynb`.
-- **AWS IAM Credentials**: Configure AWS CLI with appropriate permissions for Amazon Bedrock.
-- **Model Access**: Enable the following models in the Amazon Bedrock Console:
-  - Anthropic Claude 3.7 Sonnet
-  - Anthropic Claude 3.5 Sonnet
-  - Anthropic Claude 3.5 Haiku
-  - Amazon Nova Pro
-  - Amazon Nova Micro
-  - DeepSeek-R1
-  - Meta LLama 3.1 70B Instruct
-
----
-
-### **Models Used in Notebooks**
-
-#### **OpenAI Models**
-- **GPT-4o**: Primary model used in `prompt_engineering_reasoning_model_day1.ipynb` (for comparison).
-- **GPT-4o-mini**: Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb` and `tooluse_openai.ipynb` (~10x cheaper than gpt-4o).
-- **o3** (`o3-2025-04-16`): Most advanced reasoning model used in `prompt_engineering_reasoning_model_day1.ipynb`.
-- **o4-mini** (`o4-mini-2025-04-16`): Cost-effective reasoning model used in `prompt_engineering_reasoning_model_day1.ipynb`.
-- **o3-mini** (`o3-mini-2025-01-31`): Balanced reasoning model used in `prompt_engineering_reasoning_model_day1.ipynb`.
-
-#### **Anthropic Models**
-- **Claude Opus 4.6** (`claude-opus-4-6`): Most capable model with Extended Thinking feature, used in `prompt_engineering_reasoning_model_day1.ipynb`.
-- **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Balanced model with Extended Thinking, used in `prompt_engineering_reasoning_model_day1.ipynb`.
-- **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Fast and cost-effective model used in `prompt_engineering_day1_solution.ipynb`.
-- **Claude 3.7 Sonnet**: Available via Amazon Bedrock.
-- **Claude Sonnet 4.5** (`claude-sonnet-4-5-20250929`): Used in `tooluse_anthropic.ipynb` for balanced performance and cost.
-- **Claude 4.6 Opus** (`claude-opus-4-6`): Used in `prompt_engineering_anthropic_models_advanced.ipynb` for capability comparisons.
-- **Claude 4.5 Sonnet** (`claude-sonnet-4-5-20250929`): Used in `prompt_engineering_anthropic_models_advanced.ipynb`.
-- **Claude 4.5 Haiku** (`claude-haiku-4-5-20251001`): Primary model used in `prompt_engineering_anthropic_models_advanced.ipynb`.
-
-### **Required Python Libraries**
-
-Install the following packages using `pip`:
+### 1) Python dependencies
 
 ```bash
-pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupyter pandas openai-agents
+pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupyter pandas openai-agents gspread google-auth ipywidgets
 ```
 
-**For AI Agents SDK (Lab1):**
+### 2) Environment variables
+
+Create a `.env` file in `/Users/bernardleong/Workspaces/nus-iss/generativeai_course`:
+
 ```bash
-pip install openai-agents openai>=1.54.0 pandas numpy
+OPENAI_API_KEY=your_openai_api_key
+ANTHROPIC_API_KEY=your_anthropic_api_key
+GOOGLE_SERVICE_ACCOUNT_JSON=/absolute/path/to/service_account.json
+GOOGLE_SHEET_ID=your_google_sheet_id
+GOOGLE_WORKSHEET_NAME=Leads
 ```
 
----
+Notes:
+- `GOOGLE_SERVICE_ACCOUNT_JSON` can be either a JSON file path or raw JSON string.
+- For Bedrock notebooks, configure AWS credentials separately via `aws configure`.
 
-### **Environment Setup**
+## Featured Labs
 
-1. Create a `.env` file in the root directory with your API keys:
-   ```bash
-   OPENAI_API_KEY=your_openai_api_key_here
-   ANTHROPIC_API_KEY=your_anthropic_api_key_here
-   ```
+### Lab 1: OpenAI Agents SDK Introduction
 
-2. For Amazon Bedrock, configure AWS credentials:
-   ```bash
-   aws configure
-   ```
+Notebook:
+- `/Users/bernardleong/Workspaces/nus-iss/generativeai_course/agents/Lab1_introduction_to_agents_openAI.ipynb`
 
-3. Ensure you have the required permissions for Amazon Bedrock in your AWS account.
+Covers:
+- agent fundamentals
+- function tools and built-in tools
+- handoffs and routing patterns
+- streaming and structured output
+- error handling and cost tracking
 
-## **Jupyter Notebooks Overview**
+### Lab 2: Build Agentic AI Namecard to CRM
 
-### **prompt_engineering/prompt_engineering_day1_solution.ipynb**
-A comprehensive introduction to prompt engineering for large language models (LLMs) using OpenAI's GPT-4o-mini and Anthropic's Claude Haiku 4.5. Covers principles of prompt design, API usage, message formatting, model parameters (`max_tokens`/`max_completion_tokens`, `temperature`, `stop sequences`), and system prompts. Features both fast and cost-effective models ideal for learning and experimentation. Includes hands-on code examples comparing OpenAI and Anthropic APIs with equivalent model tiers.
+Notebook:
+- `/Users/bernardleong/Workspaces/nus-iss/generativeai_course/agents/Lab2_build_agenticAI_namecard_to_crm.ipynb`
 
-### **prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb**
-**The most comprehensive Claude API guide available** - A complete production-ready resource covering everything from basics to advanced patterns.
+#### Learning objectives
+Students will learn how to:
+1. Extract structured contact data from a namecard image.
+2. Run a planner/search/writer deep-research flow with citations.
+3. Transform AI outputs into CRM schema fields.
+4. Write CRM records to Google Sheets with validation and idempotency checks.
 
-**Core Fundamentals**: Model selection across Claude 4 family (Opus 4.6, Sonnet 4.5, Haiku 4.5), system prompts for role definition, temperature and parameter tuning (0.0-1.0 ranges with use cases), messages format and conversation history management, few-shot prompting techniques with examples.
+#### Lab 2 flow
+1. Stage 1: OCR and namecard extraction.
+2. Stage 2: Deep research on person and company.
+3. Stage 3: CRM mapping and Google Sheets write.
 
-**Production Features**: Token counting with cost calculators for all Claude models, robust error handling with exponential backoff retry logic, rate limit management, batch processing with examples, comprehensive best practices checklist (10 categories covering model selection, prompt design, parameters, error handling, cost management, security, testing, production readiness, UX, and maintenance).
+#### Lab 2 requirements
+- `OPENAI_API_KEY`
+- `GOOGLE_SERVICE_ACCOUNT_JSON`
+- `GOOGLE_SHEET_ID`
+- optional: `GOOGLE_WORKSHEET_NAME` (default: `Leads`)
 
-**Advanced Capabilities**: Multi-turn conversation management with ConversationManager class, stop sequences for controlled generation, streaming responses for better UX, reusable prompt templates and patterns (PromptTemplate class), JSON mode and structured outputs with parsing helpers, 4 complete real-world use cases (content moderation, document processing, code review, customer support bot).
+#### Lab 2 run instructions
+1. Open the notebook and run cells from top to bottom.
+2. Use **Upload Namecard** to upload a JPG/PNG.
+3. Confirm uploaded filename appears in the UI.
+4. Optionally correct extracted fields manually.
+5. Click **Run Pipeline**.
+6. Review Stage 1/2/3 outputs and final sheet write status.
 
-**Hands-on Examples**: Every concept includes working code examples with output. Advanced use cases demonstrate production-ready patterns combining multiple techniques. Perfect for beginners learning Claude API basics and experienced developers building scalable production applications.
+#### Lab 2 guardrails implemented
+- schema validation with Pydantic
+- confidence scoring and low-confidence warnings
+- fallback behavior when live API calls fail
+- Google Sheets header validation
+- duplicate guard using `(email, company)`
 
-### **prompt_engineering/prompt_engineering_reasoning_model_day1.ipynb**
-Comprehensive guide to reasoning models from both OpenAI (o3, o4-mini, o3-mini) and Anthropic (Claude with Extended Thinking). Covers the 4 key principles of prompting reasoning models, cost/performance comparisons, advanced examples (mathematical proofs, code debugging, multi-step planning), and interactive testing functions. Includes detailed model selection guide to help choose the right model for your task. Features enhanced IPython HTML displays, error handling, token usage tracking, and cost analysis for all major reasoning models.
+## Other Notebooks
 
-### **prompt_engineering/prompt_engineering_amazon_bedrock.ipynb**
-Introduces prompt engineering with Amazon Bedrock's APIs, covering both the basic Invoke API and the more powerful Converse API. Demonstrates text summarization, multi-turn conversations, and function calling capabilities across various foundation models including Claude 3.7 Sonnet, Amazon Nova Pro, and Meta Llama 3.1. Includes practical examples of comparing results across different state-of-the-art models and working with AWS Bedrock's serverless infrastructure.
+### Prompt Engineering
+- `prompt_engineering/prompt_engineering_day1_solution.ipynb`
+- `prompt_engineering/prompt_engineering_reasoning_model_day1.ipynb`
+- `prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb`
+- `prompt_engineering/prompt_engineering_amazon_bedrock.ipynb`
+- `prompt_engineering/prompt_engineering_multi_modal_models_amazon_bedrock.ipynb`
 
-### **prompt_engineering/prompt_engineering_multi_modal_models_amazon_bedrock.ipynb**
-Explores multi-modal capabilities with Amazon Bedrock, including image processing and embeddings. Uses the Titan embedding models to work with product images for similarity search and cross-modal reasoning. The notebook includes practical examples using the product images in the `data/titan-embed/` directory.
+### Tool Use
+- `tool_use/tooluse_openai.ipynb`
+- `tool_use/tooluse_anthropic.ipynb`
 
-### **agents/Lab1_introduction_to_agents_openAI.ipynb**
-**Complete production-ready AI Agents tutorial using OpenAI's Agents SDK.** Comprehensive educational resource covering:
+## Troubleshooting
 
-- **Environment Setup**: Complete installation guide for `openai-agents` SDK, dependency management, API key configuration
-- **Agent Fundamentals**: Creating agents, model selection (GPT-4o, GPT-5.2), instructions, temperature control, and agent lifecycle
-- **Custom Function Tools**: Build and integrate custom Python functions as agent tools using `@function_tool` decorator
-- **Built-in Tools**: WebSearchTool for real-time web search ($0.025/call), FileSearchTool for vector store integration
-- **Structured Outputs**: Type-safe responses using Pydantic models with strict JSON schema compliance (KeyMetric pattern)
-- **Multi-Agent Patterns**:
-  - Agent handoffs with `handoffs` parameter for specialist delegation
-  - Router agents for query classification and routing
-  - Customer support bot with triage and specialist agents
-- **Streaming Responses**: Real-time token-by-token output using `Runner.run_streamed()` with `ResponseTextDeltaEvent`
-- **Error Handling**: Production patterns including retry with exponential backoff, fallback strategies, and graceful degradation
-- **Cost Tracking**: Built-in CostTracker class with Pandas DataFrame reports for monitoring API usage and costs
-- **Professional Display System**:
-  - HTML cards with color-coded status indicators (success/info/warning/error)
-  - Markdown section headers with descriptions
-  - Styled analysis reports with gradient backgrounds
-  - Pandas tables for structured data and metrics
-- **Production Best Practices**: Error recovery, type safety, structured outputs, cost monitoring, and visual feedback
-- **Complete Documentation**: Includes `DISPLAY_IMPROVEMENTS.md` with usage examples and customization guide
-- **60+ comprehensive cells** with working examples, from basics to advanced multi-agent workflows
+### `ModuleNotFoundError` (e.g., `gspread`)
+- Re-run setup/import cells.
+- Restart kernel and run from top.
 
-### **tool_use/tooluse_anthropic.ipynb**
-**Comprehensive agentic tool use guide with Anthropic Claude Sonnet 4.5.** Production-ready educational resource covering:
+### Uploaded file not recognized
+- Re-run the UI cell, then upload again.
+- Ensure file is `.jpg`, `.jpeg`, or `.png`.
+- Confirm upload status shows filename and byte size.
 
-- **Complete Tool Integration**: Wikipedia article retrieval with robust error handling (empty results, disambiguation, page errors)
-- **Professional HTML Displays**: Beautiful gradient styling with responsive design for results presentation
-- **Helper Functions**: `extract_tool_use()` with type hints and comprehensive docstrings
-- **Educational Examples**:
-  - "No tool needed" scenarios (when Claude uses internal knowledge)
-  - Multi-turn conversations with tool chaining
-  - Error handling demonstrations with real edge cases
-- **API Documentation**: Detailed comparison of Anthropic vs OpenAI tool use patterns
-- **Best Practices**: Input validation, error handling, clean code organization
-- **44 comprehensive cells** with clear progression from basics to advanced patterns
+### Google Sheets write failures
+- Verify `GOOGLE_SHEET_ID` and worksheet name.
+- Ensure service account has access to the target sheet.
+- Ensure sheet header row exactly matches expected CRM columns in the notebook.
 
-### **tool_use/tooluse_openai.ipynb**
-**Comprehensive agentic tool use guide with OpenAI GPT-4o-mini.** Production-ready educational resource covering:
+## Maintainer Notes
 
-- **Complete Tool Integration**: Wikipedia article retrieval with function calling API
-- **Security Hardened**: Uses `json.loads()` instead of `eval()` for safe JSON parsing (critical security fix)
-- **Professional HTML Displays**: Beautiful gradient styling matching Anthropic version
-- **Helper Functions**: `extract_tool_calls()` with type hints and comprehensive docstrings
-- **Educational Examples**:
-  - "No tool needed" scenarios (when GPT uses internal knowledge)
-  - Multi-turn conversations with proper message structure
-  - Error handling demonstrations with robust try/except blocks
-- **API Documentation**: Detailed comparison of OpenAI vs Anthropic tool use patterns
-- **Code Quality**: Eliminated 13 exploratory cells, consolidated duplicates, clear structure
-- **Cost-Effective**: Uses gpt-4o-mini (~10x cheaper than gpt-4o) perfect for student experimentation
-- **25 focused cells** (reduced from 29) with streamlined, professional progression
-
----
-
-## **Key Features and Updates**
-
-### **Recent Updates (2026-02-08)**
-
-#### **Major Enhancement: agents/Lab1_introduction_to_agents_openAI.ipynb** - Complete production-ready AI Agents tutorial
-
-**Critical Fixes & SDK Integration:**
-- **OpenAI Agents SDK Installation**: Added complete setup for `openai-agents==0.8.1` with all dependencies
-- **Strict JSON Schema Compliance**:
-  - Fixed `UserError` with `Dict[str, str]` by implementing `KeyMetric` model pattern
-  - Changed `key_metrics: Dict[str, str]` to `key_metrics: List[KeyMetric]` for strict schema compatibility
-- **Agent Handoffs**:
-  - Fixed `TypeError` with `handoff_to` parameter → corrected to `handoffs` with Agent object references
-  - Updated 2 locations: Phase 5 Handoff Pattern Demo and Customer Support Bot
-  - Proper multi-agent delegation with `transfer_to_*` tool generation
-- **Streaming Implementation**:
-  - Fixed `TypeError` in streaming by using `result.stream_events()` pattern
-  - Added `ResponseTextDeltaEvent` handling for token-by-token output
-- **Error Handling Patterns**:
-  - Fixed `AttributeError` by returning tuple `(result, agent_name)` from fallback function
-  - Implemented retry with exponential backoff and fallback strategies
-- **Dependency Management**:
-  - Installed pandas==3.0.0 and numpy==2.4.2 for display enhancements
-  - All ModuleNotFoundError issues resolved
-
-**Professional Display System (Moderate Enhancement Level):**
-- **Helper Functions**:
-  - `display_section_header()` - Markdown headers with emoji and descriptions
-  - `display_agent_response()` - HTML cards with color-coded status (success/info/warning/error)
-  - `display_analysis_report()` - Formatted reports with gradient backgrounds
-- **Cost Tracking Enhancement**:
-  - Upgraded `CostTracker.report()` to use Pandas DataFrames with styled tables
-  - Separate tables for summary metrics and by-model breakdown
-  - Purple gradient headers matching notebook theme
-- **Visual Improvements**:
-  - Replaced 265 plain `print()` statements with rich displays in 6+ key sections
-  - Color-coded agent responses with gradients, shadows, and rounded corners
-  - Professional typography and consistent spacing
-  - HTML cards for: Data Analysis Pipeline, Handoff Demo, Customer Support, Error Handling
-  - Markdown headers for: Streaming Demo, Structured Output, all major phases
-- **Documentation**: Created `agents/DISPLAY_IMPROVEMENTS.md` with complete usage guide, color scheme reference, and examples
-
-**Code Quality & Organization:**
-- Removed 3 backup/messy notebook files (*.backup, *_MESSY*.ipynb)
-- Updated `.gitignore` to exclude `.claude/` directory
-- Clean, maintainable structure with reusable helper functions
-- Type-safe implementations with Pydantic validation
-
-**Educational Impact:**
-- Students see professional, color-coded outputs matching industry standards
-- Clear visual hierarchy for understanding agent behavior
-- Transparent cost tracking for learning budget management
-- Production-ready patterns for real-world applications
-- **60+ comprehensive cells** covering fundamentals to advanced multi-agent workflows
-
-- **Model Updates**:
-  - `prompt_engineering_day1_solution.ipynb`: Updated to use fast, cost-effective models (Claude Haiku 4.5 and GPT-4o-mini)
-  - `prompt_engineering_reasoning_model_day1.ipynb`: Complete overhaul with latest reasoning models (o3, o4-mini, o3-mini) and Claude Extended Thinking
-  - `prompt_engineering_anthropic_models_advanced.ipynb`: **Migrated all Claude 3.x models to Claude 4 family**
-    - Updated 6 Claude 3 Opus references → Claude 4.6 Opus (`claude-opus-4-6`)
-    - Updated 5 Claude 3.5 Sonnet references → Claude 4.5 Sonnet (`claude-sonnet-4-5-20250929`)
-    - Updated 7 Claude 3/3.5 Haiku references → Claude 4.5 Haiku (`claude-haiku-4-5-20251001`)
-    - Total: 18 model ID updates ensuring students work with latest, most capable models
-  - **`tool_use/` notebooks: Complete transformation to production-ready educational resources**
-    - `tooluse_anthropic.ipynb`: Updated to Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`)
-    - `tooluse_openai.ipynb`: Updated to GPT-4o-mini (cost-effective alternative)
-- **API Parameter Fix**: Corrected OpenAI API calls to use `max_completion_tokens` instead of deprecated `max_tokens` parameter
-- **Bug Fix**: Merged `calculate_cost` function into main setup cell (cell 3) to prevent undefined function errors. The function is now automatically loaded with initial imports and configuration, eliminating the need to manually run additional cells.
-- **Major Enhancement: `tool_use/` notebooks** - Comprehensive 4-phase improvement:
-  - **Phase 1 - Critical Fixes**:
-    - Security: Replaced unsafe `eval()` with `json.loads()` in OpenAI notebook (8 occurrences)
-    - Error Handling: Added robust `get_article()` function with disambiguation, empty results, and exception handling
-    - Added type hints and comprehensive docstrings to core functions
-  - **Phase 2 - Code Quality**:
-    - Removed 13 exploratory/incomplete cells from OpenAI notebook (29 → 25 cells)
-    - Eliminated duplicate function definitions (get_article, article_search_tool)
-    - Added helper functions: `extract_tool_use()` (Anthropic), `extract_tool_calls()` (OpenAI)
-    - Unified display functions with professional HTML styling in both notebooks
-  - **Phase 3 - Educational Enhancements**:
-    - Added "no tool needed" examples showing when models use internal knowledge
-    - Added multi-turn conversation examples with proper message handling
-    - Added error handling demonstrations (disambiguation, empty results)
-    - Added comprehensive API differences documentation (Anthropic vs OpenAI)
-    - Added best practices and "Next Steps" sections
-  - **Phase 4 - Polish & Best Practices**:
-    - Enhanced all functions with type hints (`Optional`, `Any`, `List`)
-    - Added comprehensive docstrings with Args, Returns, Examples
-    - Consistent code organization and structure across both notebooks
-- **Major Enhancement: prompt_engineering_anthropic_models_advanced.ipynb** - Transformed into the most comprehensive Claude API guide:
-  - **System Prompts**: Complete guide with comparison examples (with/without system prompts), best practices, advanced patterns
-  - **Temperature & Parameters**: In-depth coverage with live comparisons across 0.0/0.5/1.0, use case recommendations, top_p and top_k
-  - **Token Counting & Cost Management**: Production-ready calculator for Claude 4 family models (Opus 4.6, Sonnet 4.5, Haiku 4.5), real API tracking, cost comparisons
-  - **Error Handling & Retry Logic**: Exponential backoff, rate limiting, batch processing with full error taxonomy
-  - **Multi-turn Conversations**: ConversationManager class, session management, token tracking, conversation strategies
-  - **Stop Sequences**: Controlled generation with delimiters, structured data extraction, dialogue formatting
-  - **Streaming Responses**: Real-time output, event handling, token tracking during streams, helper functions
-  - **Prompt Templates**: Reusable PromptTemplate class, common patterns library (extraction, classification, analysis, etc.)
-  - **JSON Mode & Structured Outputs**: Robust JSON generation, parsing helpers, schema validation, complex nested structures
-  - **Advanced Use Cases**: 4 production-ready examples (content moderation, document processing, code review, support bot)
-  - **Best Practices Checklist**: 10-category comprehensive guide for production deployment
-  - **90 comprehensive cells** covering every concept from fundamentals to advanced use cases
-- **New Features in prompt_engineering_reasoning_model_day1.ipynb**:
-  - Added all 4 principles for prompting reasoning models (was incomplete)
-  - Claude Extended Thinking examples with full integration
-  - Cost calculator and performance comparison across models
-  - Advanced reasoning examples (math proofs, code debugging, planning)
-  - Interactive testing function for custom prompts
-  - Comprehensive model selection guide with decision tree
-  - Error handling and token usage tracking throughout
-  - Enhanced visualizations with IPython HTML displays
-
-### **Enhanced Display System**
-- **IPython HTML Integration**: Beautiful, professional HTML displays for AI responses
-- **Responsive Design**: Modern styling with gradients, shadows, and typography
-- **Tool Use Visualization**: Clear display of tool usage and results
-- **Error Handling**: Graceful error display with consistent styling
-
-### **OpenAI API Integration**
-- **Function Calling**: Complete implementation of OpenAI's function calling API
-- **Tool Schema**: Proper tool schema definition for OpenAI compatibility
-- **Message Handling**: Correct message structure for tool calls and responses
-- **Error Recovery**: Robust error handling for API interactions
-
-### **Cross-Platform Compatibility**
-- **Multiple API Support**: Working examples for OpenAI, Anthropic, and Amazon Bedrock
-- **Consistent Interface**: Similar patterns across different API providers
-- **Environment Management**: Proper API key and credential handling
-
-### **Data Assets**
-- **Product Images**: The `prompt_engineering/data/titan-embed/` directory contains 27 product images used for multi-modal embedding examples
-- **Supporting Images**: The `prompt_engineering/images/` directory contains diagrams for temperature and message formatting concepts
-
----
-
-## **Usage Examples**
-
-### **Basic Tool Use with OpenAI**
-```python
-from tool_use.tooluse_openai import answer_question
-
-# Ask a question that requires external information
-result = answer_question("What is the box office for Nezha 2?")
-```
-
-### **Beautiful HTML Display**
-```python
-from IPython.display import display, HTML
-
-# Display results with professional styling
-display_answer_with_html(question, answer)
-```
-
----
-
-## **Contributing**
-
-This repository is maintained for educational purposes at the Institute of Systems Science, National University of Singapore. For questions or issues related to the course materials, please contact the course instructors.
-
----
-
-## **License**
-
-This repository contains educational materials for the Generative AI course at the Institute of Systems Science, National University of Singapore.
+- Keep notebook names stable once labs are published.
+- Update this README whenever a lab is renamed or a required env var changes.
