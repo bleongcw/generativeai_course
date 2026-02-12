@@ -87,52 +87,135 @@ Students will learn how to:
 - Google Sheets header validation
 - duplicate guard using `(email, company)`
 
-## Notebook Catalog (With Descriptions)
+## Notebook Catalog
+
+### Agents
+
+#### `agents/Lab1_introduction_to_agents_openAI.ipynb`
+**Description:** Comprehensive introduction to OpenAI Agents SDK covering agent fundamentals, tools (function and built-in), handoffs and routing patterns, streaming, structured outputs, error handling, and cost tracking.
+
+**Dependencies:**
+- `openai` - OpenAI Python client
+- `pandas` - Data manipulation and analysis
+- `python-dotenv` - Environment variable management
+
+**Environment Variables:**
+- `OPENAI_API_KEY` (required)
+
+---
+
+#### `agents/Lab2_build_agenticAI_namecard_to_crm.ipynb`
+**Description:** End-to-end agentic AI workflow that extracts contact information from namecard images, conducts deep research on the person and company, and writes structured CRM records to Google Sheets with validation and idempotency checks.
+
+**Dependencies:**
+- `openai` - OpenAI Python client
+- `pydantic` - Data validation and schema modeling
+- `pandas` - Data manipulation
+- `gspread` - Google Sheets API client
+- `google-auth` - Google authentication
+- `ipywidgets` - Interactive UI widgets for Jupyter
+- `python-dotenv` - Environment variable management
+
+**Environment Variables:**
+- `OPENAI_API_KEY` (required)
+- `GOOGLE_SERVICE_ACCOUNT_JSON` (required) - Path to service account JSON or raw JSON string
+- `GOOGLE_SHEET_ID` (required)
+- `GOOGLE_WORKSHEET_NAME` (optional, default: "Leads")
+
+---
 
 ### Prompt Engineering
 
 #### `prompt_engineering/prompt_engineering_day1_solution.ipynb`
-Introductory notebook for prompt design fundamentals across providers. Covers prompt structure, instruction clarity, parameter tuning, and baseline prompt patterns for class exercises.
+**Description:** Foundational prompt design exercises across OpenAI and Anthropic providers. Covers prompt structure, instruction clarity, parameter tuning, and baseline prompt patterns.
+
+**Dependencies:**
+- `openai` - OpenAI Python client
+- `anthropic` - Anthropic Python client
+- `python-dotenv` - Environment variable management
+
+**Environment Variables:**
+- `OPENAI_API_KEY` (required)
+- `ANTHROPIC_API_KEY` (required)
+
+---
 
 #### `prompt_engineering/prompt_engineering_reasoning_model_day1.ipynb`
-Reasoning-model focused notebook comparing advanced reasoning workflows, including step-wise problem solving, deeper analysis prompts, and model-behavior tradeoffs.
+**Description:** Reasoning-model focused exercises comparing advanced reasoning workflows, step-wise problem solving, deeper analysis prompts, and model-behavior tradeoffs.
+
+**Dependencies:**
+- `openai` - OpenAI Python client
+- `anthropic` - Anthropic Python client
+- `python-dotenv` - Environment variable management
+- `ipython` - Enhanced interactive Python shell
+- `jupyter` - Jupyter notebook environment
+
+**Environment Variables:**
+- `OPENAI_API_KEY` (required)
+- `ANTHROPIC_API_KEY` (required)
+
+---
 
 #### `prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb`
-Advanced Anthropic-focused prompt engineering reference. Includes model selection considerations, robust prompting patterns, and production-oriented prompting practices.
+**Description:** Advanced Anthropic-focused prompt engineering covering model selection, robust prompting patterns, production-oriented practices, and Claude-specific features.
+
+**Dependencies:**
+- `anthropic` - Anthropic Python client
+
+**Environment Variables:**
+- `ANTHROPIC_API_KEY` (required)
+
+---
 
 #### `prompt_engineering/prompt_engineering_amazon_bedrock.ipynb`
-Prompting and model invocation examples on Amazon Bedrock, including multi-model comparison and Bedrock API usage patterns.
+**Description:** Prompt engineering and model invocation examples using Amazon Bedrock, including multi-model comparisons and Bedrock API usage patterns.
+
+**Dependencies:**
+- `boto3` - AWS SDK for Python
+- `json` - JSON handling (standard library)
+
+**AWS Configuration:**
+- AWS credentials configured via `aws configure` or environment variables
+- Access to Amazon Bedrock service
+
+---
 
 #### `prompt_engineering/prompt_engineering_multi_modal_models_amazon_bedrock.ipynb`
-Multimodal exercises on Bedrock for image/text scenarios and embedding-related workflows.
+**Description:** Multimodal prompt engineering on Amazon Bedrock for image/text scenarios, vision models, and embedding-related workflows.
 
-### Agents
+**Dependencies:**
+- `boto3` - AWS SDK for Python
+- `json` - JSON handling (standard library)
+- `base64` - Base64 encoding/decoding (standard library)
 
-#### `agents/1_lab1.ipynb`
-Legacy Lab 1 notebook introducing foundational agent ideas and simple orchestration patterns.
+**AWS Configuration:**
+- AWS credentials configured via `aws configure` or environment variables
+- Access to Amazon Bedrock multimodal models
 
-#### `agents/2_lab2.ipynb`
-Legacy Lab 2 notebook focused on practical agent workflows and tool interaction patterns.
-
-#### `agents/3_lab3.ipynb`
-Legacy Lab 3 notebook extending agent workflows to more structured multi-step and guardrail-style patterns.
-
-#### `agents/4_lab4.ipynb`
-Legacy Lab 4 notebook centered on deeper research-style orchestration patterns.
-
-#### `agents/Lab1_introduction_to_agents_openAI.ipynb`
-Primary modern Lab 1 notebook for OpenAI Agents SDK: agent setup, tools, handoffs, structured outputs, and production-ready patterns.
-
-#### `agents/Lab2_build_agenticAI_namecard_to_crm.ipynb`
-Primary modern Lab 2 notebook implementing end-to-end agentic flow from namecard OCR to deep research to CRM write (Google Sheets).
+---
 
 ### Tool Use
 
 #### `tool_use/tooluse_openai.ipynb`
-OpenAI tool-calling notebook demonstrating function/tool integration, conversational tool use, and safe parsing patterns.
+**Description:** OpenAI function-calling and tool-use patterns demonstrating tool integration, conversational tool use, parallel tool calls, and safe response parsing.
+
+**Dependencies:**
+- `openai` - OpenAI Python client
+- `python-dotenv` - Environment variable management
+
+**Environment Variables:**
+- `OPENAI_API_KEY` (required)
+
+---
 
 #### `tool_use/tooluse_anthropic.ipynb`
-Anthropic tool-use notebook demonstrating tool invocation flow, response handling, and practical integration patterns.
+**Description:** Anthropic tool-use patterns demonstrating tool definition, invocation flow, response handling, and practical integration patterns with Claude.
+
+**Dependencies:**
+- `anthropic` - Anthropic Python client
+
+**Environment Variables:**
+- `ANTHROPIC_API_KEY` (required)
 
 ## Troubleshooting
 
