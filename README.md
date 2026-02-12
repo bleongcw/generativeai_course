@@ -87,18 +87,52 @@ Students will learn how to:
 - Google Sheets header validation
 - duplicate guard using `(email, company)`
 
-## Other Notebooks
+## Notebook Catalog (With Descriptions)
 
 ### Prompt Engineering
-- `prompt_engineering/prompt_engineering_day1_solution.ipynb`
-- `prompt_engineering/prompt_engineering_reasoning_model_day1.ipynb`
-- `prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb`
-- `prompt_engineering/prompt_engineering_amazon_bedrock.ipynb`
-- `prompt_engineering/prompt_engineering_multi_modal_models_amazon_bedrock.ipynb`
+
+#### `prompt_engineering/prompt_engineering_day1_solution.ipynb`
+Introductory notebook for prompt design fundamentals across providers. Covers prompt structure, instruction clarity, parameter tuning, and baseline prompt patterns for class exercises.
+
+#### `prompt_engineering/prompt_engineering_reasoning_model_day1.ipynb`
+Reasoning-model focused notebook comparing advanced reasoning workflows, including step-wise problem solving, deeper analysis prompts, and model-behavior tradeoffs.
+
+#### `prompt_engineering/prompt_engineering_anthropic_models_advanced.ipynb`
+Advanced Anthropic-focused prompt engineering reference. Includes model selection considerations, robust prompting patterns, and production-oriented prompting practices.
+
+#### `prompt_engineering/prompt_engineering_amazon_bedrock.ipynb`
+Prompting and model invocation examples on Amazon Bedrock, including multi-model comparison and Bedrock API usage patterns.
+
+#### `prompt_engineering/prompt_engineering_multi_modal_models_amazon_bedrock.ipynb`
+Multimodal exercises on Bedrock for image/text scenarios and embedding-related workflows.
+
+### Agents
+
+#### `agents/1_lab1.ipynb`
+Legacy Lab 1 notebook introducing foundational agent ideas and simple orchestration patterns.
+
+#### `agents/2_lab2.ipynb`
+Legacy Lab 2 notebook focused on practical agent workflows and tool interaction patterns.
+
+#### `agents/3_lab3.ipynb`
+Legacy Lab 3 notebook extending agent workflows to more structured multi-step and guardrail-style patterns.
+
+#### `agents/4_lab4.ipynb`
+Legacy Lab 4 notebook centered on deeper research-style orchestration patterns.
+
+#### `agents/Lab1_introduction_to_agents_openAI.ipynb`
+Primary modern Lab 1 notebook for OpenAI Agents SDK: agent setup, tools, handoffs, structured outputs, and production-ready patterns.
+
+#### `agents/Lab2_build_agenticAI_namecard_to_crm.ipynb`
+Primary modern Lab 2 notebook implementing end-to-end agentic flow from namecard OCR to deep research to CRM write (Google Sheets).
 
 ### Tool Use
-- `tool_use/tooluse_openai.ipynb`
-- `tool_use/tooluse_anthropic.ipynb`
+
+#### `tool_use/tooluse_openai.ipynb`
+OpenAI tool-calling notebook demonstrating function/tool integration, conversational tool use, and safe parsing patterns.
+
+#### `tool_use/tooluse_anthropic.ipynb`
+Anthropic tool-use notebook demonstrating tool invocation flow, response handling, and practical integration patterns.
 
 ## Troubleshooting
 
