@@ -1,6 +1,6 @@
 # Generative AI Course Repository
 
-Course materials for workshops and labs at the Institute of Systems Science (NUS). This repository includes notebooks on prompt engineering, reasoning models, tool use, and agentic AI workflows.
+Course materials for workshops and labs at the Institute of Systems Science (NUS). This repository includes notebooks on prompt engineering, reasoning models, tool use, Amazon Bedrock workflows, and agentic AI patterns.
 
 ## Repository Structure
 
@@ -16,7 +16,7 @@ Course materials for workshops and labs at the Institute of Systems Science (NUS
 ### 1) Python dependencies
 
 ```bash
-pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupyter pandas openai-agents gspread google-auth ipywidgets
+pip install anthropic openai boto3 python-dotenv wikipedia tabulate ipython jupyter pandas openai-agents gspread google-auth ipywidgets pillow scipy seaborn matplotlib
 ```
 
 ### 2) Environment variables
@@ -34,6 +34,25 @@ GOOGLE_WORKSHEET_NAME=Leads
 Notes:
 - `GOOGLE_SERVICE_ACCOUNT_JSON` can be either a JSON file path or raw JSON string.
 - For Bedrock notebooks, configure AWS credentials separately via `aws configure`.
+
+## Bedrock Model Updates
+
+The Bedrock notebooks in this repository were refreshed to align with newer Bedrock model availability and lifecycle constraints.
+
+### Current model mapping used in this course
+
+- `Claude 3.7 Sonnet` -> `Claude Sonnet 4.5` using `us.anthropic.claude-sonnet-4-5-20250929-v1:0`
+- `Claude 3.5 Haiku` -> `Claude Haiku 4.5` using `us.anthropic.claude-haiku-4-5-20251001-v1:0`
+- `Meta Llama 3.1 70B Instruct` -> `Meta Llama 4 Maverick 17B Instruct` using `us.meta.llama4-maverick-17b-instruct-v1:0`
+- Multimodal image generation examples were updated from Titan Image Generator to Nova Canvas defaults
+- Titan Multimodal Embeddings remain in place for the image-text embedding workflow
+
+### Important Bedrock notes
+
+- Anthropic examples in this course use `us.` inference-profile style IDs by default.
+- The cross-region inference demo in the Bedrock notebook uses `Amazon Nova Pro` for the runnable standard-vs-cross-region comparison, because newer Anthropic models may not support plain on-demand model IDs in all accounts.
+- Some Bedrock image models may be marked legacy or unavailable depending on your account history and Region. The multimodal notebook now falls back to locally generated placeholder images so the embedding and semantic-search sections can still run.
+- If your account has a different active image-generation model, update the helper `model_id` in the multimodal notebook before running the image generation section.
 
 ## Featured Labs
 
@@ -168,7 +187,7 @@ Students will learn how to:
 ---
 
 #### `prompt_engineering/prompt_engineering_amazon_bedrock.ipynb`
-**Description:** Prompt engineering and model invocation examples using Amazon Bedrock, including multi-model comparisons and Bedrock API usage patterns.
+**Description:** Prompt engineering and model invocation examples using Amazon Bedrock, including Claude Sonnet 4.5, Claude Haiku 4.5, Amazon Nova models, DeepSeek-R1, and Meta Llama 4 Maverick 17B Instruct. Covers `InvokeModel`, `Converse`, cross-region inference, streaming, code generation, and function calling.
 
 **Dependencies:**
 - `boto3` - AWS SDK for Python
@@ -177,20 +196,34 @@ Students will learn how to:
 **AWS Configuration:**
 - AWS credentials configured via `aws configure` or environment variables
 - Access to Amazon Bedrock service
+- Access to the Bedrock models enabled in your account
+
+**Notes:**
+- Anthropic examples use `us.` inference-profile IDs by default.
+- The notebook includes a built-in `get_weather()` fallback so the function-calling section does not depend on manual copy-paste.
+- Bedrock parameter settings were updated to avoid newer Claude validation conflicts such as sending both `temperature` and `top_p`.
 
 ---
 
 #### `prompt_engineering/prompt_engineering_multi_modal_models_amazon_bedrock.ipynb`
-**Description:** Multimodal prompt engineering on Amazon Bedrock for image/text scenarios, vision models, and embedding-related workflows.
+**Description:** Multimodal prompt engineering on Amazon Bedrock for image/text scenarios, image generation, and embedding-based semantic search. The notebook now defaults to Nova Canvas-style image generation while keeping Titan Multimodal Embeddings for the shared vector-space workflow.
 
 **Dependencies:**
 - `boto3` - AWS SDK for Python
 - `json` - JSON handling (standard library)
 - `base64` - Base64 encoding/decoding (standard library)
+- `pillow` - Image handling
+- `numpy` - Numerical operations
+- `scipy` - Distance calculations for search
+- `seaborn` / `matplotlib` - Similarity heatmap visualization
 
 **AWS Configuration:**
 - AWS credentials configured via `aws configure` or environment variables
 - Access to Amazon Bedrock multimodal models
+
+**Notes:**
+- If no active Bedrock image-generation model is available in your account, the notebook automatically creates local placeholder product images so the later embedding and search sections can still run.
+- If `PIL` import fails, install Pillow with `python -m pip install pillow`.
 
 ---
 
@@ -223,6 +256,10 @@ Students will learn how to:
 - Re-run setup/import cells.
 - Restart kernel and run from top.
 
+### `ModuleNotFoundError: No module named 'PIL'`
+- Install Pillow with `python -m pip install pillow`.
+- Restart the kernel after installation.
+
 ### Uploaded file not recognized
 - Re-run the UI cell, then upload again.
 - Ensure file is `.jpg`, `.jpeg`, or `.png`.
@@ -233,7 +270,16 @@ Students will learn how to:
 - Ensure service account has access to the target sheet.
 - Ensure sheet header row exactly matches expected CRM columns in the notebook.
 
+### Bedrock `ValidationException` for Claude parameters
+- If Bedrock reports that `temperature` and `top_p` cannot both be specified, restart the kernel and rerun the updated notebook cells.
+- The current course notebooks are written to use only one of those sampling controls per Claude request.
+
+### Bedrock image model marked legacy or unavailable
+- Some Amazon image models may be unavailable in a given account even if they appear in Bedrock listings.
+- The multimodal notebook now falls back to local placeholder images so the rest of the lab can continue.
+- If you have another active image-generation model in your Bedrock account, update the helper `model_id` before rerunning the image generation section.
+
 ## Maintainer Notes
 
 - Keep notebook names stable once labs are published.
-- Update this README whenever a lab is renamed or a required env var changes.
+- Update this README whenever a lab is renamed, a required env var changes, or the Bedrock model lineup for the course is refreshed.
