@@ -1,0 +1,14 @@
+anthropic
+openai
+python-dotenv
+pydantic
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+ipython
+jupyter
+nbformat
+nbclient
+pytest

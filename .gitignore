@@ -3,6 +3,11 @@ agents/2_lab2.ipynb
 agents/3_lab3.ipynb
 agents/4_lab4.ipynb
 
+# Local credentials and environment configuration
+.env
+*.env
+!.env.example
+
 # IDE and editor files
 .vscode/
 
@@ -12,6 +17,8 @@ agents/4_lab4.ipynb
 # Jupyter Notebook checkpoints and temp files
 .ipynb_checkpoints/
 .virtual_documents/
+__pycache__/
+*.pyc
 
 # Display improvements documentation
 DISPLAY_IMPROVEMENTS.md
