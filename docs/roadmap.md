@@ -15,6 +15,7 @@
 - Add notebook smoke tests for mock-mode execution.
 - Move repeated API helper code into shared modules where possible.
 - Add cost-estimation tables that are easy to refresh as provider pricing changes.
+- Expand caching lessons from notebook-local examples to production cache policies, including invalidation, privacy, and observability.
 
 ## NLP Module Milestones
 
@@ -52,7 +53,7 @@
 - Add deployment:
   - Simple API service.
   - Streamlit or notebook UI.
-  - Logging, tracing, cost dashboards, and privacy review.
+  - Logging, tracing, cache dashboards, cost dashboards, and privacy review.
 
 ## Maintenance Principles
 

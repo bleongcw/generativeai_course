@@ -123,13 +123,13 @@ Notebook: `agents/Lab1_introduction_to_agents_openAI.ipynb`
 Covers:
 
 - Agent fundamentals with GPT-5.5 as the default runnable model
-- GPT-5 mini vs GPT-5.5 cost and quality trade-offs
+- GPT-5.4 mini vs GPT-5.5 cost and quality trade-offs
 - GPT-5.5 Pro guidance for selective maximum-quality use
 - Claude Sonnet 4.6 (`claude-sonnet-4-6`) provider-comparison notes for reasoning, critique, synthesis, and long-context workflows
 - Function tools and built-in tools
 - Handoffs and routing patterns
 - Streaming and structured output
-- Error handling and cost tracking
+- Error handling, cost tracking, and notebook-local response caching for repeated benchmark prompts
 
 ### Lab 2: Build Agentic AI Namecard To CRM
 
@@ -142,6 +142,7 @@ Students learn how to:
 3. Transform AI outputs into CRM schema fields.
 4. Write CRM records to Google Sheets with validation and idempotency checks.
 5. Discuss where Claude Sonnet 4.6 (`claude-sonnet-4-6`) could be used as a synthesis or evaluation comparison provider without changing the lab structure.
+6. Use notebook-local Responses API caching to avoid repeated extraction, search planning, web search, and dossier synthesis calls during reruns.
 
 Required environment variables:
 
@@ -164,6 +165,7 @@ The Bedrock notebooks use newer model IDs and inference-profile style examples w
 
 - `docs/architecture.md` explains repository layout, notebook standards, provider adapters, RAG data flow, secret handling, cost strategy, and testing.
 - `docs/roadmap.md` tracks current modules, near-term improvements, and future additions such as Google AI, Hugging Face, vector databases, automated evals, and deployment.
+- `CHANGELOG.md` records notable course updates by date.
 
 ## Testing And Smoke Checks
 
@@ -184,6 +186,7 @@ Notebook guidance:
 - All new notebooks run in mock mode without API keys.
 - Live OpenAI or Anthropic calls require both a key and `LIVE_API=true`.
 - Mock mode is for teaching continuity, not semantic quality benchmarking.
+- Agent notebooks use notebook-local caches for selected repeated calls; restart the kernel to clear those caches.
 
 ## Troubleshooting
 

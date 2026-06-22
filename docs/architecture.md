@@ -99,9 +99,19 @@ Teaching notebooks should:
 - Make live API calls only when explicitly enabled.
 - Keep prompts short and inspectable.
 - Explain which stage costs money: embedding, generation, search, or evaluation.
+- Cache repeated classroom/demo calls only inside the active notebook kernel.
 - Add retries only in applied labs where temporary failure would disrupt class flow.
 
 Production-oriented labs should also track latency, input tokens, output tokens, model name, provider, and estimated cost.
+
+### Notebook-Local Caching
+
+The agent notebooks now include two lightweight cache patterns:
+
+- `agent_response_cache` in Lab 1 stores repeated benchmark answers by agent name, model, instructions, and query.
+- `responses_text_cache` in Lab 2 stores selected OpenAI Responses API `output_text` results by stable SHA-256 cache keys.
+
+These caches are intentionally in-memory. They reduce accidental repeated paid calls during classroom reruns, but they do not create a durable data store. Do not cache private learner data beyond the notebook session unless a production retention policy exists.
 
 ## Testing And Mock Mode
 
