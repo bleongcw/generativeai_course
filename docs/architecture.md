@@ -99,6 +99,7 @@ Teaching notebooks should:
 - Make live API calls only when explicitly enabled.
 - Keep prompts short and inspectable.
 - Explain which stage costs money: embedding, generation, search, or evaluation.
+- Verify pricing against the official OpenAI pricing page before each live workshop; web search and model token rates can change.
 - Cache repeated classroom/demo calls only inside the active notebook kernel.
 - Add retries only in applied labs where temporary failure would disrupt class flow.
 
@@ -112,6 +113,18 @@ The agent notebooks now include two lightweight cache patterns:
 - `responses_text_cache` in Lab 2 stores selected OpenAI Responses API `output_text` results by stable SHA-256 cache keys.
 
 These caches are intentionally in-memory. They reduce accidental repeated paid calls during classroom reruns, but they do not create a durable data store. Do not cache private learner data beyond the notebook session unless a production retention policy exists.
+
+### OpenAI Agents SDK State And Review Patterns
+
+Lab 1 teaches the current SDK continuation surfaces:
+
+- local replay with `result.to_input_list()`;
+- durable sessions with `SQLiteSession`;
+- lightweight server-managed continuation with `previous_response_id` and `result.last_response_id`;
+- `result.last_agent` after handoffs when a specialist should continue;
+- `result.interruptions` plus `result.to_state()` for human approval flows.
+
+The lab also distinguishes handoffs from agents-as-tools: use handoffs when a specialist owns the next response, and use agents-as-tools when a manager keeps responsibility for the final answer.
 
 ## Testing And Mock Mode
 

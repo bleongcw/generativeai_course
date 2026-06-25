@@ -123,12 +123,13 @@ Notebook: `agents/Lab1_introduction_to_agents_openAI.ipynb`
 Covers:
 
 - Agent fundamentals with GPT-5.5 as the default runnable model
-- GPT-5.4 mini vs GPT-5.5 cost and quality trade-offs
+- GPT-5.4 mini vs GPT-5.5 cost, latency, and quality trade-offs using current standard pricing guidance
 - GPT-5.5 Pro guidance for selective maximum-quality use
 - Claude Sonnet 4.6 (`claude-sonnet-4-6`) provider-comparison notes for reasoning, critique, synthesis, and long-context workflows
 - Function tools and built-in tools
-- Handoffs and routing patterns
-- Streaming and structured output
+- Handoffs, agents-as-tools, and routing patterns
+- Streaming, structured output, and explicit continuation state with sessions or response IDs
+- Guardrails, human approval boundaries, trace grading, and repeatable eval framing
 - Error handling, cost tracking, and notebook-local response caching for repeated benchmark prompts
 
 ### Lab 2: Build Agentic AI Namecard To CRM
@@ -138,7 +139,7 @@ Notebook: `agents/Lab2_build_agenticAI_namecard_to_crm.ipynb`
 Students learn how to:
 
 1. Extract structured contact data from a namecard image using the OpenAI Responses API with GPT-5.5.
-2. Run a planner/search/writer deep-research flow with citations.
+2. Run a planner/search/writer deep-research flow with citations using the current Responses API `web_search` tool.
 3. Transform AI outputs into CRM schema fields.
 4. Write CRM records to Google Sheets with validation and idempotency checks.
 5. Discuss where Claude Sonnet 4.6 (`claude-sonnet-4-6`) could be used as a synthesis or evaluation comparison provider without changing the lab structure.
